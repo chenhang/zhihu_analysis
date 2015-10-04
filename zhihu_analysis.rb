@@ -1,4 +1,15 @@
 require 'mechanize'
+require 'active_record'
+require 'mysql2'
+require 'logger'
+
+ActiveRecord::Base.logger = Logger.new('debug.log')
+configuration = YAML::load(IO.read('database.yml'))
+ActiveRecord::Base.establish_connection(configuration['development'])
+
+class User < ActiveRecord::Base
+end
+
 class ZhihuPeople
   @@base_url = 'http://www.zhihu.com/people/'
 
