@@ -64,12 +64,10 @@ class ZhihuPeople
     puts "#{@name} has followers: #{follower_urls.size}"
   end
 end
+
+
 begin
   evenstar = ZhihuPeople.new('evenstar', 'ca946dc5bee68d0280d074b9925decf1')
   evenstar.get_followers
-  p evenstar.followers.group_by {|_, v| v}.map {|k, v| [k, v.size]}.sort_by(&:last).reverse.to_h
+  evenstar.followers.group_by {|_, v| v}.map {|k, v| [k, v.size]}.sort_by(&:last).reverse.to_h
 end
-
-
-# xiepanda = ZhihuPeople.new('xiepanda', 'c948a6c96e21986af5d9c720334989f7')
-# xiepanda.followers_links
